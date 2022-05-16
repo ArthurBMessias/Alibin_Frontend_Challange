@@ -1,7 +1,6 @@
-import { UserListTable } from '../hooks/userList';
+// import { UserListTable } from '../hooks/userList';
 
-const allUsersList = () => {
-  const { user } = UserListTable;
+ export function AllUsersList({ usersList }) {
 
   return (
     <table>
@@ -14,11 +13,11 @@ const allUsersList = () => {
         </tr>
       </thead>
       <tbody>
-        {user.map((user, index) => (
-          <tr key={index}>
+        {usersList && usersList.map((user) => (
+          <tr key={user.id}>
             <td>{user.name}</td>
             <td>{user.email}</td>
-            <td>{user.company[0]}</td>
+            <td>{user.company.name}</td>
             <td>{user.website}</td>
           </tr>
         ))}
@@ -27,4 +26,4 @@ const allUsersList = () => {
   );
 };
 
-export default allUsersList;
+export default AllUsersList;
