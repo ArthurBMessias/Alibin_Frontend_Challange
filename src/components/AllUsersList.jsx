@@ -1,7 +1,4 @@
-// import { UserListTable } from '../hooks/userList';
-
- export function AllUsersList({ usersList }) {
-
+export function AllUsersList({ usersList }) {
   return (
     <table>
       <thead>
@@ -13,17 +10,18 @@
         </tr>
       </thead>
       <tbody>
-        {usersList && usersList.map((user) => (
-          <tr key={user.id}>
-            <td>{user.name}</td>
-            <td>{user.email}</td>
-            <td>{user.company.name}</td>
-            <td>{user.website}</td>
-          </tr>
-        ))}
+        {usersList &&
+          usersList.map((user) => (
+            <tr key={user.id}>
+              <td>{user.name}</td>
+              <td>{user.email}</td>
+              <td>{user.company.name}</td>
+              <td>{user.website}</td>
+            </tr>
+          ))}
       </tbody>
     </table>
   );
-};
+}
 
 export default AllUsersList;

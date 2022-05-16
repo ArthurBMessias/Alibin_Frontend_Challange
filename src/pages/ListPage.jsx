@@ -1,9 +1,9 @@
 
 import AllUsersList from '../components/AllUsersList';
-import { UserListTable } from '../hooks/userList';
+import { useFetchUsersTable } from '../hooks/useFetchUsersTable';
 
 export function ListPage() {
-  const { usersList } = UserListTable();
+  const { usersList } = useFetchUsersTable();
 
   return (
     <>
