@@ -1,6 +1,7 @@
 import { Table } from 'react-bootstrap';
-import { BiEditAlt, BiDotsVerticalRounded } from 'react-icons/bi';
+import { BiDotsVerticalRounded } from 'react-icons/bi';
 import { TiDelete } from 'react-icons/ti';
+import { ModalEdit } from './ModalEdit';
 
 export function AllUsersList({ usersList }) {
   return (
@@ -25,7 +26,7 @@ export function AllUsersList({ usersList }) {
               <td>{user.company.name}</td>
               <td>{user.website}</td>
               <td>
-                <BiEditAlt />
+                <ModalEdit />
               </td>
               <td>
                 <TiDelete />
