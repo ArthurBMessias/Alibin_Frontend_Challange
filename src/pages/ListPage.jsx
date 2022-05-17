@@ -1,13 +1,26 @@
-
+import { useState } from 'react';
 import AllUsersList from '../components/AllUsersList';
-import { useFetchUsersTable } from '../hooks/useFetchUsersTable';
+import { ModalEdit } from '../components/ModalEdit';
 
 export function ListPage() {
-  const { usersList } = useFetchUsersTable();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [userInfo, setUserInfo] = useState(undefined);
+
+  const handleClose = () => setIsModalOpen(false);
 
   return (
     <>
-       <AllUsersList usersList={usersList} />
+      <ModalEdit 
+        isOpen={isModalOpen} 
+        onClose={handleClose}
+        userInfo={userInfo} 
+      />
+      <AllUsersList
+        onEdit={ (user) => {
+          setIsModalOpen(true);
+          setUserInfo(user);
+        }}
+       />
     </>
   );
 }

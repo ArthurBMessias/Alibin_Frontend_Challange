@@ -1,41 +1,65 @@
 import { useState } from 'react';
-import { Form } from 'react-bootstrap';
+import { Button, Form } from 'react-bootstrap';
+// import { useFetchUsersTable } from '../hooks/useFetchUsersTable';
 
-export function FormModalEdit() {
-  const [name, setName] = useState();
-  const [email, setEmail] = useState();
-  const [companyName, setCompanyName] = useState();
-  const [website, setWebSite] = useState();
+export function FormModalEdit({ userInfo }) {
+  const [name, setName] = useState(userInfo?.name || '');
+  const [email, setEmail] = useState(userInfo?.email || '');
+  const [companyName, setCompanyName] = useState(userInfo?.company.name || '');
+  const [website, setWebSite] = useState(userInfo?.website || '');
+
+  // const { usersList, setUsersList, updateUser } = useFetchUsersTable();
   
-  function handleSubmit() {
-
+  function handleEditUserInfo(event) {
+    event.preventDefault();
+    
   }
 
- 
-
   return (
-    <Form onSubmit={ handleSubmit }>
+    <Form onSubmit={ handleEditUserInfo }>
       <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>USUÁRIO</Form.Label>
-        <Form.Control type="text" placeholder="Editar Usuário" value={name} />
-        <Form.Label>EMAIL</Form.Label>
-        <Form.Control type="text" placeholder="Editar email" value={email} />
-        <Form.Label>CLIENTE</Form.Label>
+        <Form.Label>
+          USUÁRIO
+        </Form.Label>
+        <Form.Control 
+          type="text" 
+          placeholder="Editar Usuário" 
+          value={ name }
+          onChange={ (event) => setName(event.target.value)} 
+        />
+        <Form.Label>
+          EMAIL
+        </Form.Label>
+        <Form.Control 
+          type="text" 
+          placeholder="Editar email" 
+          value={ email }
+          onChange={(event) => setEmail(event.target.value)} 
+        />
+        <Form.Label>
+          CLIENTE
+        </Form.Label>
         <Form.Control
           type="text"
           placeholder="Editar Cliente"
-          value={companyName}
+          value={ companyName }
+          onChange={(event) => setCompanyName(event.target.value)}
         />
-        <Form.Label>PERFIL DE ACESSO</Form.Label>
+        <Form.Label>
+          PERFIL DE ACESSO
+        </Form.Label>
         <Form.Control
           type="text"
           placeholder="Editar Perfil de Acesso"
-          value={website}
+          value={ website }
+          onChange={(event) => setWebSite(event.target.value)}
         />
       </Form.Group>
-      <Form.Group className="mb-3" controlId="formBasicCheckbox">
-        <Form.Check type="checkbox" label="Confirma Alterações ?" />
-      </Form.Group>
+      <div className="d-grid gap-2" style={{ padding: '15px'}}>
+        <Button type="submit">
+          Salvar Alterações
+        </Button>
+      </div>
     </Form>
   );
 }

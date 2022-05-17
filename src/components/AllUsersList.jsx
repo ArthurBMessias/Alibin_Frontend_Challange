@@ -1,9 +1,10 @@
 import { Table } from 'react-bootstrap';
-import { BiDotsVerticalRounded } from 'react-icons/bi';
+import { BiDotsVerticalRounded, BiEditAlt } from 'react-icons/bi';
 import { TiDelete } from 'react-icons/ti';
-import { ModalEdit } from './ModalEdit';
+import { useFetchUsersTable } from '../hooks/useFetchUsersTable';
 
-export function AllUsersList({ usersList }) {
+export function AllUsersList({ onEdit }) {
+  const { usersList, deleteUser } = useFetchUsersTable();
   return (
     <Table striped bordered hover>
       <thead>
@@ -26,10 +27,16 @@ export function AllUsersList({ usersList }) {
               <td>{user.company.name}</td>
               <td>{user.website}</td>
               <td>
-                <ModalEdit />
+                <BiEditAlt 
+                  onClick={ () => onEdit(user) } 
+                  type='button'
+                 />
               </td>
               <td>
-                <TiDelete />
+                <TiDelete 
+                  type='button'
+                  onClick={ () => deleteUser(user.id)} 
+                />
               </td>
             </tr>
           ))}
