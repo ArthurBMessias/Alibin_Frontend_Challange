@@ -1,12 +1,19 @@
+import { Table } from 'react-bootstrap';
+import { BiEditAlt, BiDotsVerticalRounded } from 'react-icons/bi';
+import { TiDelete } from 'react-icons/ti';
+
 export function AllUsersList({ usersList }) {
   return (
-    <table>
+    <Table striped bordered hover>
       <thead>
         <tr>
           <th>USUÁRIO</th>
           <th>EMAIL</th>
           <th>CLIENTE</th>
           <th>PERFIL DE ACESSO</th>
+          <th>
+            <BiDotsVerticalRounded />
+          </th>
         </tr>
       </thead>
       <tbody>
@@ -17,10 +24,16 @@ export function AllUsersList({ usersList }) {
               <td>{user.email}</td>
               <td>{user.company.name}</td>
               <td>{user.website}</td>
+              <td>
+                <BiEditAlt />
+              </td>
+              <td>
+                <TiDelete />
+              </td>
             </tr>
           ))}
       </tbody>
-    </table>
+    </Table>
   );
 }
 
