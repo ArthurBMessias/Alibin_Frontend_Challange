@@ -4,6 +4,7 @@ import { TiDelete } from 'react-icons/ti';
 import { useFetchUsersTable } from '../hooks/useFetchUsersTable';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import { DotsConditions } from './DotsConditions';
 
 export function AllUsersList({
   onEdit,
@@ -71,6 +72,7 @@ const { newList } = useFetchUsersTable();
   ));
 
   return (
+    <div>
     <Table striped bordered hover>
       {console.log(updatedList)}
       <thead>
@@ -79,13 +81,12 @@ const { newList } = useFetchUsersTable();
           <th>EMAIL</th>
           <th>CLIENTE</th>
           <th>PERFIL DE ACESSO</th>
-          <th>
-            <BiDotsVerticalRounded />
-          </th>
+          <th><BiDotsVerticalRounded /></th>
         </tr>
       </thead>
       <tbody>{ !isUserListUpdated ? apiList : updatedList }</tbody>
     </Table>
+    </div>
   );
 }
 
