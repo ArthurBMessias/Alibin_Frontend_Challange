@@ -1,6 +1,7 @@
-import { Table } from "react-bootstrap";
-import { BiDotsVerticalRounded, BiEditAlt } from "react-icons/bi";
-import { TiDelete } from "react-icons/ti";
+import { Dropdown, Table } from 'react-bootstrap';
+import { BiDotsVerticalRounded, BiEditAlt } from 'react-icons/bi';
+import { TiDelete } from 'react-icons/ti';
+import { DropDownConditions } from './DropDownConditions';
 
 export function AllUsersList({
   onEdit,
@@ -8,7 +9,6 @@ export function AllUsersList({
   deleteUser,
   isUserListUpdated,
 }) {
-
   const storagedUsers = JSON.parse(localStorage.getItem('users')) || [];
 
   function deleteEditedUser(id) {
@@ -55,9 +55,9 @@ export function AllUsersList({
           <th>EMAIL</th>
           <th>CLIENTE</th>
           <th>PERFIL DE ACESSO</th>
-          <th>
-            <BiDotsVerticalRounded />
-          </th>
+      <th>
+        <DropDownConditions />
+      </th>
         </tr>
       </thead>
       <tbody>{!isUserListUpdated ? apiList : updatedList}</tbody>
