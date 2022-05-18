@@ -1,21 +1,17 @@
-import { useState } from 'react';
-import { Button, Modal } from 'react-bootstrap';
-import { BiEditAlt } from 'react-icons/bi';
+import { Modal } from 'react-bootstrap';
+// import { BiEditAlt } from 'react-icons/bi';
 import { FormModalEdit } from './FormModalEdit';
 
-export function ModalEdit() {
-  const [show, setShow] = useState(false);
+export function ModalEdit({ isOpen, onClose, userInfo, setIsModalOpen, setIsUserListUpdated }) {
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
 
   return (
     <>
-      <BiEditAlt onClick={handleShow} type='button' />
+      {/* <BiEditAlt onClick={handleShow} type='button' /> */}
 
       <Modal
-        show={show}
-        onHide={handleClose}
+        show={isOpen}
+        onHide={onClose}
         backdrop="static"
         keyboard={false}
       >
@@ -23,13 +19,12 @@ export function ModalEdit() {
           <Modal.Title>Editar Dados do Cliente</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <FormModalEdit />
+          <FormModalEdit 
+            userInfo={ userInfo }
+            setIsModalOpen={ setIsModalOpen }
+            setIsUserListUpdated={setIsUserListUpdated}
+          />
         </Modal.Body>
-        <Modal.Footer>
-          <Button variant="primary" type="submit">
-            Salvar Alterações
-          </Button>
-        </Modal.Footer>
       </Modal>
     </>
   );
