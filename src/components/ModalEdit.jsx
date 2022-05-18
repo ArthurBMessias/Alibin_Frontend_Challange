@@ -2,7 +2,7 @@ import { Modal } from 'react-bootstrap';
 // import { BiEditAlt } from 'react-icons/bi';
 import { FormModalEdit } from './FormModalEdit';
 
-export function ModalEdit({ isOpen, onClose, userInfo }) {
+export function ModalEdit({ isOpen, onClose, userInfo, setIsModalOpen, setIsUserListUpdated }) {
 
 
   return (
@@ -19,7 +19,11 @@ export function ModalEdit({ isOpen, onClose, userInfo }) {
           <Modal.Title>Editar Dados do Cliente</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <FormModalEdit userInfo={ userInfo } />
+          <FormModalEdit 
+            userInfo={ userInfo }
+            setIsModalOpen={ setIsModalOpen }
+            setIsUserListUpdated={setIsUserListUpdated}
+          />
         </Modal.Body>
       </Modal>
     </>
