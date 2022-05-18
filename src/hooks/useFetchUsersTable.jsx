@@ -1,12 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 export const useFetchUsersTable = () => {
   const [usersList, setUsersList] = useState([]);
-  const [newList, setNewList] = useState([]);
   const [isUserListUpdated, setIsUserListUpdated] = useState(false);
+  const [newUser, setNewUser] = useState([false]);
 
   useEffect(() => {
-    fetch('https://jsonplaceholder.typicode.com/users')
+    fetch("https://jsonplaceholder.typicode.com/users")
       .then((response) => response.json())
       .then((data) => setUsersList(data));
   }, []);
@@ -17,15 +17,13 @@ export const useFetchUsersTable = () => {
       (user) => user.id === editedUser.id
     );
     if (userExists) {
-      const newArray = [];
       userExists.name = editedUser.name;
       userExists.email = editedUser.email;
       userExists.company.name = editedUser.companyName;
       userExists.website = editedUser.website;
-     newArray.push(updatedUsersList);
-     setNewList(newArray)
+      localStorage.setItem("users", JSON.stringify(updatedUsersList))
+      setNewUser(updatedUsersList);
     }
-
   }
 
   function deleteUser(id) {
@@ -37,8 +35,7 @@ export const useFetchUsersTable = () => {
     setUsersList,
     updateUser,
     deleteUser,
-    newList,
     isUserListUpdated,
-    setIsUserListUpdated
+    setIsUserListUpdated,
   };
 };
