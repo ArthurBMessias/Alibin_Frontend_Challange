@@ -1,14 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 export const useFetchUsersTable = () => {
   const [usersList, setUsersList] = useState([]);
   const [isUserListUpdated, setIsUserListUpdated] = useState(false);
   const [newUser, setNewUser] = useState([false]);
   const [isUserChecked, setIsUserChecked] = useState(true);
-  const [allColumns, setAllColumns] = useState(['name', 'email'])
+  const [allColumns, setAllColumns] = useState(['name', 'email', 'client', 'perfil']);
 
   useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/users")
+    fetch('https://jsonplaceholder.typicode.com/users')
       .then((response) => response.json())
       .then((data) => setUsersList(data));
   }, []);
@@ -23,7 +23,7 @@ export const useFetchUsersTable = () => {
       userExists.email = editedUser.email;
       userExists.company.name = editedUser.companyName;
       userExists.website = editedUser.website;
-      localStorage.setItem("users", JSON.stringify(updatedUsersList))
+      localStorage.setItem('users', JSON.stringify(updatedUsersList));
       setNewUser(updatedUsersList);
     }
   }
@@ -33,10 +33,8 @@ export const useFetchUsersTable = () => {
   }
 
   function filterColumn(isUserChecked) {
-    if(isUserChecked === true) return console.log(setIsUserChecked(false))
+    if (isUserChecked === true) return setIsUserChecked(false);
   }
-
-
 
   return {
     allColumns,
@@ -48,6 +46,6 @@ export const useFetchUsersTable = () => {
     isUserListUpdated,
     setIsUserListUpdated,
     isUserChecked,
-    filterColumn
+    filterColumn,
   };
 };

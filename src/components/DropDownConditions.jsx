@@ -29,9 +29,41 @@ export function DropDownConditions({ allColumns, setAllColumns }) {
           type="checkbox"
           label="E-mail"
           checked={allColumns.includes('email')}
+          onChange={(e) => {
+            const isChecked = e.target.checked;
+            setAllColumns((current) =>
+              isChecked
+                ? current.concat(['email'])
+                : current.filter((colName) => colName !== 'email')
+            );
+          }}
         />
-        <Form.Check type="checkbox" label="Cliente" />
-        <Form.Check type="checkbox" label="Perfil de Acesso" />
+        <Form.Check
+          type="checkbox"
+          label="Cliente"
+          checked={allColumns.includes('client')}
+          onChange={(e) => {
+            const isChecked = e.target.checked;
+            setAllColumns((current) =>
+              isChecked
+                ? current.concat(['client'])
+                : current.filter((colName) => colName !== 'client')
+            );
+          }}
+        />
+        <Form.Check
+          type="checkbox"
+          label="Perfil de Acesso"
+          checked={allColumns.includes('perfil')}
+          onChange={(e) => {
+            const isChecked = e.target.checked;
+            setAllColumns((current) =>
+              isChecked
+                ? current.concat(['perfil'])
+                : current.filter((colName) => colName !== 'perfil')
+            );
+          }}
+        />
       </Dropdown.Menu>
     </Dropdown>
   );

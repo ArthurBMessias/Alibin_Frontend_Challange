@@ -23,21 +23,8 @@ export function AllUsersList({
       <tr key={user.id}>
         {allColumns.includes('name') && <td>{user.name}</td>}
         {allColumns.includes('email') && <td>{user.email}</td>}
-        <td>{user.company.name}</td>
-        <td>{user.website}</td>
-        <td>
-          <BiEditAlt onClick={() => onEdit(user)} type="button" />
-        </td>
-        <td>
-          <TiDelete type="button" onClick={() => deleteUser(user.id)} />
-        </td>
-      </tr>
-    ));
-  const userColumn =
-    usersList &&
-    usersList.map((user) => (
-      <tr key={user.id}>
-        <td>{user.name}</td>
+        {allColumns.includes('client') && <td>{user.company.name}</td>}
+        {allColumns.includes('perfil') && <td>{user.website}</td>}
         <td>
           <BiEditAlt onClick={() => onEdit(user)} type="button" />
         </td>
@@ -68,8 +55,8 @@ export function AllUsersList({
         <tr>
           {allColumns.includes('name') && <th>USUÁRIO</th>}
           {allColumns.includes('email') && <th>EMAIL</th>}
-          <th>CLIENTE</th>
-          <th>PERFIL DE ACESSO</th>
+          {allColumns.includes('client') && <th>CLIENTE</th>}
+          {allColumns.includes('perfil') && <th>PERFIL DE ACESSO</th>}
           <th>
             <DropDownConditions setAllColumns={setAllColumns} allColumns={allColumns} />
           </th>
