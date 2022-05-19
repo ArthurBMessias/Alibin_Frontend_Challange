@@ -4,6 +4,8 @@ export const useFetchUsersTable = () => {
   const [usersList, setUsersList] = useState([]);
   const [isUserListUpdated, setIsUserListUpdated] = useState(false);
   const [newUser, setNewUser] = useState([false]);
+  const [isUserChecked, setIsUserChecked] = useState(true);
+  const [allColumns, setAllColumns] = useState(['name', 'email'])
 
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/users")
@@ -30,12 +32,22 @@ export const useFetchUsersTable = () => {
     setUsersList(usersList.filter((user) => user.id !== id));
   }
 
+  function filterColumn(isUserChecked) {
+    if(isUserChecked === true) return console.log(setIsUserChecked(false))
+  }
+
+
+
   return {
+    allColumns,
+    setAllColumns,
     usersList,
     setUsersList,
     updateUser,
     deleteUser,
     isUserListUpdated,
     setIsUserListUpdated,
+    isUserChecked,
+    filterColumn
   };
 };

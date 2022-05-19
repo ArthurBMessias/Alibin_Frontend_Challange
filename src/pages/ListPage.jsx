@@ -12,6 +12,8 @@ export function ListPage() {
     isUserListUpdated,
     setIsUserListUpdated,
     updatedUsersList,
+    allColumns,
+    setAllColumns,
   } = useFetchUsersTable();
 
   const handleClose = () => setIsModalOpen(false);
@@ -34,6 +36,8 @@ export function ListPage() {
         deleteUser={deleteUser}
         isUserListUpdated={isUserListUpdated}
         updatedUsersList={updatedUsersList}
+        allColumns={allColumns}
+        setAllColumns={setAllColumns}
       />
       
     </>
