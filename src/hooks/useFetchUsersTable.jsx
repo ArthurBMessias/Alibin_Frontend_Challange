@@ -4,7 +4,7 @@ export const useFetchUsersTable = () => {
   const [usersList, setUsersList] = useState([]);
   const [isUserListUpdated, setIsUserListUpdated] = useState(false);
   const [newUser, setNewUser] = useState([false]);
-  const [isUserChecked, setIsUserChecked] = useState(true);
+  const [standard, setStandard] = useState(true);
   const [allColumns, setAllColumns] = useState(['name', 'email', 'client', 'perfil']);
 
   useEffect(() => {
@@ -32,8 +32,8 @@ export const useFetchUsersTable = () => {
     setUsersList(usersList.filter((user) => user.id !== id));
   }
 
-  function filterColumn(isUserChecked) {
-    if (isUserChecked === true) return setIsUserChecked(false);
+  function filterColumn(isChecked) {
+    if (isChecked === true) return setStandard(!isChecked)
   }
 
   return {
@@ -45,7 +45,8 @@ export const useFetchUsersTable = () => {
     deleteUser,
     isUserListUpdated,
     setIsUserListUpdated,
-    isUserChecked,
+    standard,
+    setStandard,
     filterColumn,
   };
 };

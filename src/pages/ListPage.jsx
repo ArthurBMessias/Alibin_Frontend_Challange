@@ -8,12 +8,16 @@ export function ListPage() {
   const [userInfo, setUserInfo] = useState(undefined);
   const {
     usersList,
+    setUsersList,
     deleteUser,
     isUserListUpdated,
     setIsUserListUpdated,
     updatedUsersList,
     allColumns,
     setAllColumns,
+    standard,
+    setStandard,
+    filterColumn,
   } = useFetchUsersTable();
 
   const handleClose = () => setIsModalOpen(false);
@@ -33,13 +37,16 @@ export function ListPage() {
           setUserInfo(user);
         }}
         usersList={usersList}
+        setUsersList={setUsersList}
         deleteUser={deleteUser}
         isUserListUpdated={isUserListUpdated}
         updatedUsersList={updatedUsersList}
         allColumns={allColumns}
         setAllColumns={setAllColumns}
+        standard={standard}
+        setStandard={setStandard}
+        filterColumn={filterColumn}
       />
-      
     </>
   );
 }

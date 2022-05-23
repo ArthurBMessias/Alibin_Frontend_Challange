@@ -1,7 +1,16 @@
 import { Dropdown, Form } from 'react-bootstrap';
 import { BiDotsVerticalRounded } from 'react-icons/bi';
 
-export function DropDownConditions({ allColumns, setAllColumns }) {
+export function DropDownConditions({
+  allColumns,
+  setAllColumns,
+  usersList,
+  setUsersList,
+  standard,
+  setStandard,
+  filterColumn,
+  apiList,
+}) {
   return (
     <Dropdown>
       <Dropdown.Toggle>
@@ -9,61 +18,85 @@ export function DropDownConditions({ allColumns, setAllColumns }) {
       </Dropdown.Toggle>
       <Dropdown.Menu>
         <>Linhas por página</>
-        <Form.Check type="checkbox" label="Padrão" />
-        <Form.Check type="checkbox" label="5 Linhas" />
-        <>Colunas</>
+        <Form.Check
+          type="checkbox"
+          label="Padrão"
+          checked={standard}
+          onChange={(e) => {
+            const isChecked = e.target.checked;
+            setUsersList(prevState => 
+            isChecked
+            ? usersList.slice(10)
+            : console.log(prevState)
+            )
+            setStandard(!standard)
+          }}
+        />
+        <Form.Check
+          type="checkbox"
+          label="5 Linhas"
+          checked={false}
+          onChange={(e) => {
+            setStandard(!standard);
+            const isChecked = e.target.checked;
+            setUsersList(() =>
+              isChecked ? usersList.splice(0, 5) : usersList
+            );
+          }}
+        />
+        {/* <>Colunas</>
         <Form.Check
           type="checkbox"
           label="Usuário"
-          checked={allColumns.includes('name')}
+          defaultChecked={false}
           onChange={(e) => {
             const isChecked = e.target.checked;
-            setAllColumns((current) =>
-              isChecked
-                ? current.concat(['name'])
-                : current.filter((colName) => colName !== 'name')
+            setAllColumns(
+              (current) => current.filter((colName) => colName === 'name')
+              // : current.concat(['name', 'email', 'client', 'perfil'])
             );
+            setStandard(!standard);
           }}
         />
         <Form.Check
           type="checkbox"
           label="E-mail"
-          checked={allColumns.includes('email')}
+          defaultChecked={false}
           onChange={(e) => {
             const isChecked = e.target.checked;
-            setAllColumns((current) =>
-              isChecked
-                ? current.concat(['email'])
-                : current.filter((colName) => colName !== 'email')
+            setAllColumns(
+              (current) => current.filter((colName) => colName === 'email')
+              // : current.concat(['name', 'email', 'client', 'perfil'])
             );
+            setStandard(!standard);
           }}
         />
         <Form.Check
           type="checkbox"
           label="Cliente"
-          checked={allColumns.includes('client')}
+          defaultChecked={false}
           onChange={(e) => {
             const isChecked = e.target.checked;
             setAllColumns((current) =>
-              isChecked
-                ? current.concat(['client'])
-                : current.filter((colName) => colName !== 'client')
+              // ? current.concat(['client'])
+              current.filter((colName) => colName === 'client')
             );
+            setStandard(!standard);
           }}
         />
         <Form.Check
           type="checkbox"
           label="Perfil de Acesso"
-          checked={allColumns.includes('perfil')}
+          defaultChecked={false}
           onChange={(e) => {
             const isChecked = e.target.checked;
             setAllColumns((current) =>
-              isChecked
-                ? current.concat(['perfil'])
-                : current.filter((colName) => colName !== 'perfil')
+              //  current.concat(['perfil'])
+              current.filter((colName) => colName === 'perfil')
             );
-          }}
-        />
+            setStandard(!standard);
+          }} */}
+        {/* /> */}
       </Dropdown.Menu>
     </Dropdown>
   );

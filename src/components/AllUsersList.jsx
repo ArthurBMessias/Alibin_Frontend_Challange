@@ -6,10 +6,14 @@ import { DropDownConditions } from './DropDownConditions';
 export function AllUsersList({
   onEdit,
   usersList,
+  setUsersList,
   deleteUser,
   isUserListUpdated,
   allColumns,
   setAllColumns,
+  standard,
+  setStandard,
+  filterColumn
 }) {
   const storagedUsers = JSON.parse(localStorage.getItem('users')) || [];
 
@@ -58,7 +62,16 @@ export function AllUsersList({
           {allColumns.includes('client') && <th>CLIENTE</th>}
           {allColumns.includes('perfil') && <th>PERFIL DE ACESSO</th>}
           <th>
-            <DropDownConditions setAllColumns={setAllColumns} allColumns={allColumns} />
+            <DropDownConditions
+              setAllColumns={setAllColumns}
+              allColumns={allColumns}
+              usersList={usersList}
+              setUsersList={setUsersList}
+              standard={standard}
+              setStandard={setStandard}
+              filterColumn={filterColumn}
+              apiList = {apiList}
+            />
           </th>
         </tr>
       </thead>
