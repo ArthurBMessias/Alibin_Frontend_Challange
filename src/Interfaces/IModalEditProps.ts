@@ -1,6 +1,6 @@
 export default interface IModalEditProps {
     isOpen: boolean;
-    onClone: () => void;
+    onClose: () => void;
     userInfo: any;
     setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
