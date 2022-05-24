@@ -1,5 +1,5 @@
 import { Table } from 'react-bootstrap';
-import { BiDotsVerticalRounded, BiEditAlt } from 'react-icons/bi';
+import { BiEditAlt } from 'react-icons/bi';
 import { TiDelete } from 'react-icons/ti';
 import { useFetchUsersTable } from '../hooks/useFetchUsersTable';
 import { IUser } from "../hooks/useFetchUsersTable";
@@ -9,7 +9,7 @@ export default interface IOnEditProps {
     onEdit: (user: IUser) => void
 }
 export function AllUsersList({ onEdit }: IOnEditProps) {
-  const { usersList, deleteUser, name, setUsersList, setName } =
+  const { usersList, deleteUser } =
     useFetchUsersTable();
 
   const apiList =
