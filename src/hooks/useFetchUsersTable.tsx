@@ -43,6 +43,7 @@ export const UsersProvider = ({ children }: IUsersProviderProps) => {
       userExists.name = editedUser.name;
       userExists.email = editedUser.email;
       userExists.company.name = editedUser.companyName;
+      userExists.website = editedUser.website;
       setUsersList(updatedUsersList);
       localStorage.setItem('users', JSON.stringify(updatedUsersList));
     }
