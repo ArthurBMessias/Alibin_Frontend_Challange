@@ -1,7 +1,12 @@
 import { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useFetchUsersTable } from '../hooks/useFetchUsersTable';
-import IFormModalProps from '../Interfaces/IFormModalProps';
+import { IUser } from '../hooks/useFetchUsersTable';
+
+interface IFormModalProps {
+  userInfo: IUser;
+  setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
 export function FormModalEdit({ userInfo, setIsModalOpen }: IFormModalProps) {
   const [name, setName] = useState(userInfo?.name || '');

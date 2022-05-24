@@ -2,8 +2,12 @@ import { Table } from 'react-bootstrap';
 import { BiDotsVerticalRounded, BiEditAlt } from 'react-icons/bi';
 import { TiDelete } from 'react-icons/ti';
 import { useFetchUsersTable } from '../hooks/useFetchUsersTable';
-import IOnEditProps from '../Interfaces/IOnEditProps';
+import { IUser } from "../hooks/useFetchUsersTable";
+import { DropDownConditions } from './DropDownConditions';
 
+export default interface IOnEditProps {
+    onEdit: (user: IUser) => void
+}
 export function AllUsersList({ onEdit }: IOnEditProps) {
   const { usersList, deleteUser, name, setUsersList, setName } =
     useFetchUsersTable();
@@ -33,18 +37,10 @@ export function AllUsersList({ onEdit }: IOnEditProps) {
           <th>EMAIL</th>
           <th>CLIENTE</th>
           <th>PERFIL DE ACESSO</th>
-          <input
-            type="checkbox"
-            defaultChecked={name}
-            onChange={() => {
-              const filteredUsers = [...usersList];
-              if (name === true) filteredUsers.map((user) => user.email);
-              setUsersList(filteredUsers);
-            }}
-          />
           <th>
-            <BiDotsVerticalRounded />
+            <DropDownConditions />
           </th>
+
         </tr>
       </thead>
       <tbody>{apiList}</tbody>

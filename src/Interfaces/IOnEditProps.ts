@@ -1,5 +1,5 @@
-import  User  from '../hooks/useFetchUsersTable'
+import IUser from "./IUser";
 
 export default interface IOnEditProps {
-    onEdit: (user: User) => void
+    onEdit: (user: IUser) => void
 }

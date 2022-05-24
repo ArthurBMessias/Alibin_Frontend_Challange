@@ -1,8 +1,18 @@
 import { createContext, useEffect, useState, useContext } from 'react';
 import IEditUserProps from '../Interfaces/IEditUserProps';
-import IUser from '../Interfaces/IUser';
 import IUserContextData from '../Interfaces/IUserContextData';
 import IUsersProviderProps from '../Interfaces/IUsersProviderProps';
+
+export interface IUser {
+  id: string;
+  name: string;
+  email: string;
+  company: {
+    name: string;
+  };
+  website: string;
+}
+
 
 const UsersContext = createContext<IUserContextData>({} as IUserContextData);
 
