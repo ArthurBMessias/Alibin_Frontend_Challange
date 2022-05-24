@@ -1,70 +1,90 @@
-# Getting Started with Create React App
+# `Alibin Clients Table - FrontEnd`
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Esse projeto tem como propor uma solução aplicavél ao desafio apresentado no processo seletivo da empresa Alibin
 
-## Available Scripts
+## Conteúdo
 
-In the project directory, you can run:
+ - [Visão Geral](#Visão)
 
-### `npm start`
+## O Desafio
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Desenvolver uma tela que renderiza uma tabela com dados de possíveis clientes, ao clicar no ícone no canto superior direito, renderiza um checkbox clicável que controla quais colunas e linhas devem aparecer.
+Bem como os ícones de editar, edita um cliente e excluir, apaga o cliente da respectiva linha.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+### Protótipo do Dropdown
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![./images/CheckBox.png]
 
-### `npm run build`
+### Estrutura base dos Componentes utilizados
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![./images/Components]
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Processo de Criação
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### `Ferramentas Utilizadas`
+<img alt="HTML" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg">
+<img alt="Bootstrap" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/bootstrap/bootstrap-original-wordmark.svg">
+<img alt="React" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg">
+<img alt="Typescript" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg">
+<img alt="Heroku" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/heroku/heroku-original-wordmark.svg">
 
-### `npm run eject`
+### Links
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- URL : [Links](https://alibin-challenge.herokuapp.com/)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Aprendizados
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Este processo foi muito desafiador, porém consegui exercer meus aprendizados e exercitar novas formas de solucionar problemas.
 
-## Learn More
+codehiglight:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```ts
+export const UsersProvider = ({ children }: IUsersProviderProps) => {
+  const [usersList, setUsersList] = useState<IUser[]>(() => {
+    const storagedUsers = localStorage.getItem('users');
+    if (storagedUsers) {
+      return JSON.parse(storagedUsers);
+    }
+    return [];
+  });
+  const [name, setName] = useState<boolean>(false);
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+  useEffect(() => {
+    fetch('https://jsonplaceholder.typicode.com/users')
+      .then((response) => response.json())
+      .then((data) => {
+        if (usersList.length === 0) setUsersList(data);
+      });
+  }, []);
 
-### Code Splitting
+  function updateUser(editedUser: IEditUserProps) {
+    const updatedUsersList = [...usersList];
+    const userExists = updatedUsersList.find(
+      (user) => user.id === editedUser.id
+    );
+    if (userExists) {
+      userExists.name = editedUser.name;
+      userExists.email = editedUser.email;
+      userExists.company.name = editedUser.companyName;
+      userExists.website = editedUser.website;
+      setUsersList(updatedUsersList);
+      localStorage.setItem('users', JSON.stringify(updatedUsersList));
+    }
+  }
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+  function deleteUser(id: string) {
+    const updatedUsersList = [...usersList];
+    const userIndex = updatedUsersList.findIndex((user) => user.id === id);
+    if (userIndex >= 0) {
+      updatedUsersList.splice(userIndex, 1);
+      setUsersList(updatedUsersList);
+      localStorage.setItem('users', JSON.stringify(updatedUsersList));
+    }
+  }
+  ```
 
-### Analyzing the Bundle Size
+### Autor
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+-Linkedin - [Arthur Bernardo Messias](https://www.linkedin.com/in/arthur-bernardo-messias/)
