@@ -21,7 +21,7 @@ export function AllUsersList({ onEdit }: IOnEditProps) {
         <td>{user?.company?.name}</td>
         <td>{user.website}</td>
         <td>
-          <BiEditAlt onClick={() => onEdit(user)} type="button" />
+          <BiEditAlt onClick={() => onEdit(user)} type="button" data-testid='edit-button'/>
         </td>
         <td>
           <TiDelete type="button" onClick={() => deleteUser(user.id)} />
