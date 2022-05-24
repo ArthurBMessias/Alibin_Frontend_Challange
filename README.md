@@ -1,4 +1,4 @@
-# `Alibin Clients Table - FrontEnd`
+# `Alibin Clients Table`
 
 Esse projeto tem como propor uma solução aplicavél ao desafio apresentado no processo seletivo da empresa Alibin
 
@@ -31,7 +31,7 @@ Bem como os ícones de editar, edita um cliente e excluir, apaga o cliente da re
 <br>
 <img alt="Jest" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/jest/jest-plain.svg"> - Jest
 
-### Links
+### Link
 
 - URL : [Links](https://alibin-challenge.herokuapp.com/)
 
