@@ -2,10 +2,6 @@
 
 Esse projeto tem como propor uma solução aplicavél ao desafio apresentado no processo seletivo da empresa Alibin
 
-## Conteúdo
-
- - [Visão Geral](#Visão)
-
 ## O Desafio
 
 Desenvolver uma tela que renderiza uma tabela com dados de possíveis clientes, ao clicar no ícone no canto superior direito, renderiza um checkbox clicável que controla quais colunas e linhas devem aparecer.
