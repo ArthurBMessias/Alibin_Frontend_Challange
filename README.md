@@ -14,20 +14,20 @@ Bem como os ícones de editar, edita um cliente e excluir, apaga o cliente da re
 
 ### Protótipo do Dropdown
 
-![./images/CheckBox.png]
+![](./images/CheckBox.png)
 
 ### Estrutura base dos Componentes utilizados
 
-![./images/Components]
+![](./images/Components.png)
 
 ### Processo de Criação
 
 ### `Ferramentas Utilizadas`
-<img alt="HTML" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg">
-<img alt="Bootstrap" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/bootstrap/bootstrap-original-wordmark.svg">
-<img alt="React" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg">
-<img alt="Typescript" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg">
-<img alt="Heroku" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/heroku/heroku-original-wordmark.svg">
+<img alt="HTML" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg"> - HTML5 markup
+<img alt="Bootstrap" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/bootstrap/bootstrap-original-wordmark.svg"> - Bootstrap and ReactBootstrap
+<img alt="React" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg"> - React
+<img alt="Typescript" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg"> - Typescript
+<img alt="Heroku" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/heroku/heroku-original-wordmark.svg"> - Heroku
 
 ### Links
 
