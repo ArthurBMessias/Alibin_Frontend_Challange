@@ -13,9 +13,23 @@ export interface IUser {
   website: string;
 }
 
+export interface ICollumns {
+  name: string;
+  email: string;
+  client: string;
+  perfil: string;
+}
+
 const UsersContext = createContext<IUserContextData>({} as IUserContextData);
 
 export const UsersProvider = ({ children }: IUsersProviderProps) => {
+  const [allCollumns, setAllCollumns] = useState([
+    'name',
+    'email',
+    'client',
+    'perfil',
+  ]);
+  const [isUserChecked, setIsUserChecked] = useState(false);
   const [usersList, setUsersList] = useState<IUser[]>(() => {
     const storagedUsers = localStorage.getItem('users');
     if (storagedUsers) {
@@ -58,6 +72,10 @@ export const UsersProvider = ({ children }: IUsersProviderProps) => {
       localStorage.setItem('users', JSON.stringify(updatedUsersList));
     }
   }
+
+  function filterColumn(isChecked: boolean) {
+    if (isChecked === true) return setIsUserChecked(false);
+  }
   return (
     <UsersContext.Provider
       value={{
@@ -67,6 +85,10 @@ export const UsersProvider = ({ children }: IUsersProviderProps) => {
         deleteUser,
         name,
         setName,
+        filterColumn,
+        allCollumns,
+        setAllCollumns,
+        isUserChecked,
       }}
     >
       {children}
