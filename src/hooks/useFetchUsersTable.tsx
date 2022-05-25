@@ -13,6 +13,13 @@ export interface IUser {
   website: string;
 }
 
+export interface IColumns {
+  name: string;
+  email: string;
+  client: string;
+  perfil: string;
+}
+
 const UsersContext = createContext<IUserContextData>({} as IUserContextData);
 
 export const UsersProvider = ({ children }: IUsersProviderProps) => {
