@@ -31,6 +31,7 @@ export const UsersProvider = ({ children }: IUsersProviderProps) => {
       .then((response) => response.json())
       .then((data) => {
         if (usersList.length === 0) setUsersList(data);
+        console.log(usersList)
       });
   }, []);
 
