@@ -2,26 +2,29 @@ import { Table } from 'react-bootstrap';
 import { BiEditAlt } from 'react-icons/bi';
 import { TiDelete } from 'react-icons/ti';
 import { useFetchUsersTable } from '../hooks/useFetchUsersTable';
-import { IUser } from "../hooks/useFetchUsersTable";
+import { IUser } from '../hooks/useFetchUsersTable';
 import { DropDownConditions } from './DropDownConditions';
 
 export default interface IOnEditProps {
-    onEdit: (user: IUser) => void
+  onEdit: (user: IUser) => void;
 }
 export function AllUsersList({ onEdit }: IOnEditProps) {
-  const { usersList, deleteUser } =
-    useFetchUsersTable();
+  const { usersList, deleteUser, allCollumns } = useFetchUsersTable();
 
   const apiList =
     usersList &&
     usersList.map((user) => (
       <tr key={user.id}>
-        <td>{user.name}</td>
-        <td>{user.email}</td>
-        <td>{user?.company?.name}</td>
-        <td>{user.website}</td>
+        {allCollumns.includes('name') && <td>{user.name}</td>}
+        {allCollumns.includes('email') && <td>{user.email}</td>}
+        {allCollumns.includes('client') && <td>{user?.company?.name}</td>}
+        {allCollumns.includes('perfil') && <td>{user.website}</td>}
         <td>
-          <BiEditAlt onClick={() => onEdit(user)} type="button" data-testid='edit-button'/>
+          <BiEditAlt
+            onClick={() => onEdit(user)}
+            type="button"
+            data-testid="edit-button"
+          />
         </td>
         <td>
           <TiDelete type="button" onClick={() => deleteUser(user.id)} />
@@ -33,14 +36,13 @@ export function AllUsersList({ onEdit }: IOnEditProps) {
     <Table striped bordered hover>
       <thead>
         <tr>
-          <th>USUÁRIO</th>
-          <th>EMAIL</th>
-          <th>CLIENTE</th>
-          <th>PERFIL DE ACESSO</th>
+          {allCollumns.includes('name') && <th>USUÁRIO</th>}
+          {allCollumns.includes('email') && <th>EMAIL</th>}
+          {allCollumns.includes('client') && <th>CLIENTE</th>}
+          {allCollumns.includes('perfil') && <th>PERFIL DE ACESSO</th>}
           <th>
             <DropDownConditions />
           </th>
-
         </tr>
       </thead>
       <tbody>{apiList}</tbody>
