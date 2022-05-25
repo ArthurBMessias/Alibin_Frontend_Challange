@@ -13,7 +13,6 @@ export interface IUser {
   website: string;
 }
 
-
 const UsersContext = createContext<IUserContextData>({} as IUserContextData);
 
 export const UsersProvider = ({ children }: IUsersProviderProps) => {
@@ -31,7 +30,7 @@ export const UsersProvider = ({ children }: IUsersProviderProps) => {
       .then((response) => response.json())
       .then((data) => {
         if (usersList.length === 0) setUsersList(data);
-        console.log(usersList)
+        console.log(usersList);
       });
   }, []);
 
@@ -85,7 +84,6 @@ export function useFetchUsersTable() {
 //   const [newUser, setNewUser] = useState([false]);
 //   const [standard, setStandard] = useState(true);
 //   const [allColumns, setAllColumns] = useState(['name', 'email', 'client', 'perfil']);
-
 
 //   function filterColumn(isChecked) {
 //     if (isChecked === true) return setStandard(!isChecked)
