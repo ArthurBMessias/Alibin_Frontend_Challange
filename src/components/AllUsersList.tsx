@@ -9,11 +9,12 @@ export default interface IOnEditProps {
   onEdit: (user: IUser) => void;
 }
 export function AllUsersList({ onEdit }: IOnEditProps) {
-  const { usersList, deleteUser, allCollumns } = useFetchUsersTable();
+  const { usersList, deleteUser, allCollumns,  isFiveRowsChecked } = useFetchUsersTable();
 
   const apiList =
     usersList &&
-    usersList.map((user) => (
+    usersList.map((user, index) => (
+      !(isFiveRowsChecked && index >= 5) &&
       <tr key={user.id}>
         {allCollumns.includes('name') && <td>{user.name}</td>}
         {allCollumns.includes('email') && <td>{user.email}</td>}

@@ -29,7 +29,7 @@ export const UsersProvider = ({ children }: IUsersProviderProps) => {
     'client',
     'perfil',
   ]);
-  const [isUserChecked, setIsUserChecked] = useState(false);
+  const [isFiveRowsChecked, setIsFiveRowsChecked] = useState(false);
   const [usersList, setUsersList] = useState<IUser[]>(() => {
     const storagedUsers = localStorage.getItem('users');
     if (storagedUsers) {
@@ -44,7 +44,6 @@ export const UsersProvider = ({ children }: IUsersProviderProps) => {
       .then((response) => response.json())
       .then((data) => {
         if (usersList.length === 0) setUsersList(data);
-        console.log(usersList);
       });
   }, []);
 
@@ -73,9 +72,9 @@ export const UsersProvider = ({ children }: IUsersProviderProps) => {
     }
   }
 
-  function filterColumn(isChecked: boolean) {
-    if (isChecked === true) return setIsUserChecked(false);
-  }
+  // function filterColumn(isChecked: boolean) {
+  //   if (isChecked === true) return setIsUserChecked(false);
+  // }
   return (
     <UsersContext.Provider
       value={{
@@ -85,10 +84,11 @@ export const UsersProvider = ({ children }: IUsersProviderProps) => {
         deleteUser,
         name,
         setName,
-        filterColumn,
+        //filterColumn,
         allCollumns,
         setAllCollumns,
-        isUserChecked,
+        isFiveRowsChecked,
+        setIsFiveRowsChecked,
       }}
     >
       {children}

@@ -3,7 +3,7 @@ import { BiDotsVerticalRounded } from 'react-icons/bi';
 import { useFetchUsersTable } from '../hooks/useFetchUsersTable';
 
 export function DropDownConditions() {
-  const { usersList, setUsersList, allCollumns, setAllCollumns, filterColumn } = useFetchUsersTable();
+  const { allCollumns, setAllCollumns, setIsFiveRowsChecked } = useFetchUsersTable();
   return (
     <Dropdown>
       <Dropdown.Toggle>
@@ -12,16 +12,15 @@ export function DropDownConditions() {
       <Dropdown.Menu>
         <>Linhas por página</>
         <Form.Check type="checkbox" label="Padrão" checked={true} />
-        <Form.Check type="checkbox" label="5 Linhas" defaultChecked={false}
+        <Form.Check
+          type="checkbox"
+          label="5 Linhas"
+          defaultChecked={false}
           onChange={(e) => {
             const isChecked = e.target.checked;
-            const updatedUsers = [...usersList];
-            if(isChecked) {
-              setUsersList(updatedUsers)
-            }
-            setUsersList(usersList.splice(0, 5))
-            console.log(updatedUsers)
-          }} />
+            setIsFiveRowsChecked(isChecked);
+          }}
+        />
         <>Colunas</>
         <Form.Check
           type="checkbox"
