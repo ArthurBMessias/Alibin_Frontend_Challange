@@ -1,11 +1,12 @@
 import { cleanup, render, screen } from '@testing-library/react';
-import App from '../App';
-
-
+import AllUsersList from '../components/AllUsersList'
 
 describe('Test component ModalEdit', () => {
 
-  it('fetches a client', async () => {
+  it('Renders "Editar Dados do Cliente" on modal screen', async () => {
+    render(<AllUsersList />)
+    const editButton =  screen.getByRole('button')
+    expect(editButton).toBeInTheDocument()
       
 
   });

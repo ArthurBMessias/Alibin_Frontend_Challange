@@ -15,11 +15,12 @@ export function DropDownConditions() {
         <Form.Check type="checkbox" label="5 Linhas" defaultChecked={false}
           onChange={(e) => {
             const isChecked = e.target.checked;
-            setUsersList(() =>
-              isChecked
-                ? usersList.slice(5)
-                : usersList
-            );
+            const updatedUsers = [...usersList];
+            if(isChecked) {
+              setUsersList(updatedUsers)
+            }
+            setUsersList(usersList.splice(0, 5))
+            console.log(updatedUsers)
           }} />
         <>Colunas</>
         <Form.Check
