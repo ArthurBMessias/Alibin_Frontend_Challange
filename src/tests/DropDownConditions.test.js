@@ -7,5 +7,4 @@ describe('Test component DropDownCoditions', () => {
     const dropDownButton = screen.getByRole('button');
     expect(dropDownButton).toBeInTheDocument();
   });
-
 });

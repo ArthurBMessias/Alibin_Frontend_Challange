@@ -45,21 +45,21 @@ describe('Test component ModalEdit', () => {
     render(<App />);
     const editButtonMock = await screen.findByTestId('edit-button');
     userEvent.click(editButtonMock);
-    const titleModal = await screen.findByText('Editar Dados do Cliente')
-    expect(titleModal).toBeInTheDocument()
-  })
+    const titleModal = await screen.findByText('Editar Dados do Cliente');
+    expect(titleModal).toBeInTheDocument();
+  });
   it('renders a input for edit an user', async () => {
     render(<App />);
     const editButtonMock = await screen.findByTestId('edit-button');
     userEvent.click(editButtonMock);
-    const editUser = await screen.findByPlaceholderText('Editar Usuário')
-    expect(editUser).toBeInTheDocument()
-  })
+    const editUser = await screen.findByPlaceholderText('Editar Usuário');
+    expect(editUser).toBeInTheDocument();
+  });
   it('The user who client click have the same value', async () => {
     render(<App />);
     const editButtonMock = await screen.findByTestId('edit-button');
     userEvent.click(editButtonMock);
-    const editUser = await screen.findByPlaceholderText('Editar Usuário')
-    expect(editUser).toHaveValue('Bruce Wayne')
-  })
+    const editUser = await screen.findByPlaceholderText('Editar Usuário');
+    expect(editUser).toHaveValue('Bruce Wayne');
+  });
 });
