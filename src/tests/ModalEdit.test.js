@@ -1,5 +1,5 @@
 import { screen, render } from '@testing-library/react';
-import userEvent from '@testing-library/user-event'
+import userEvent from '@testing-library/user-event';
 import App from '../App';
 
 import { rest } from 'msw';
@@ -38,7 +38,14 @@ afterAll(() => server.close());
 describe('Test component ModalEdit', () => {
   it('should have a button', async () => {
     render(<App />);
-    const editButton = await screen.getByTestId('edit-button');
-    expect(editButton).toBeInTheDocument();
+    const editButtonMock = await screen.findByTestId('edit-button');
+    expect(editButtonMock).toBeVisible();
   });
+  it('On click opens the modal', async () => {
+    render(<App />);
+    const editButtonMock = await screen.findByTestId('edit-button');
+    userEvent.click(editButtonMock);
+    expect(screen.getByText('Editar Dados do Cliente')).toBeInTheDocument()
+
+  })
 });
