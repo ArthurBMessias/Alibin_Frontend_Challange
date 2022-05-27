@@ -9,7 +9,7 @@ export default interface IOnEditProps {
   onEdit: (user: IUser) => void;
 }
 export function AllUsersList({ onEdit }: IOnEditProps) {
-  const { usersList, deleteUser, allCollumns, isFiveRowsChecked } =
+  const { usersList, deleteUser, allColumns, isFiveRowsChecked } =
     useFetchUsersTable();
 
   const apiList =
@@ -18,10 +18,10 @@ export function AllUsersList({ onEdit }: IOnEditProps) {
       (user, index) =>
         !(isFiveRowsChecked && index >= 5) && (
           <tr key={user.id}>
-            {allCollumns.includes('name') && <td>{user.name}</td>}
-            {allCollumns.includes('email') && <td>{user.email}</td>}
-            {allCollumns.includes('client') && <td>{user?.company?.name}</td>}
-            {allCollumns.includes('perfil') && <td>{user.website}</td>}
+            {allColumns.includes('name') && <td>{user.name}</td>}
+            {allColumns.includes('email') && <td>{user.email}</td>}
+            {allColumns.includes('client') && <td>{user?.company?.name}</td>}
+            {allColumns.includes('perfil') && <td>{user.website}</td>}
             <td>
               <BiEditAlt
                 onClick={() => onEdit(user)}
@@ -40,10 +40,10 @@ export function AllUsersList({ onEdit }: IOnEditProps) {
     <Table striped bordered hover>
       <thead>
         <tr>
-          {allCollumns.includes('name') && <th>USUÁRIO</th>}
-          {allCollumns.includes('email') && <th>EMAIL</th>}
-          {allCollumns.includes('client') && <th>CLIENTE</th>}
-          {allCollumns.includes('perfil') && <th>PERFIL DE ACESSO</th>}
+          {allColumns.includes('name') && <th>USUÁRIO</th>}
+          {allColumns.includes('email') && <th>EMAIL</th>}
+          {allColumns.includes('client') && <th>CLIENTE</th>}
+          {allColumns.includes('perfil') && <th>PERFIL DE ACESSO</th>}
           <th>
             <DropDownConditions />
           </th>

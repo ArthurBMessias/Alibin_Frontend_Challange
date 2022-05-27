@@ -23,7 +23,7 @@ export interface ICollumns {
 const UsersContext = createContext<IUserContextData>({} as IUserContextData);
 
 export const UsersProvider = ({ children }: IUsersProviderProps) => {
-  const [allCollumns, setAllCollumns] = useState([
+  const [allColumns, setAllColumns] = useState([
     'name',
     'email',
     'client',
@@ -81,8 +81,8 @@ export const UsersProvider = ({ children }: IUsersProviderProps) => {
         deleteUser,
         name,
         setName,
-        allCollumns,
-        setAllCollumns,
+        allColumns,
+        setAllColumns,
         isFiveRowsChecked,
         setIsFiveRowsChecked,
       }}

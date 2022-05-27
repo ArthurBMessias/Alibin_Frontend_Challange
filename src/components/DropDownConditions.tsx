@@ -3,7 +3,7 @@ import { BiDotsVerticalRounded } from 'react-icons/bi';
 import { useFetchUsersTable } from '../hooks/useFetchUsersTable';
 
 export function DropDownConditions() {
-  const { allCollumns, setAllCollumns, setIsFiveRowsChecked } =
+  const { allColumns, setAllColumns, setIsFiveRowsChecked } =
     useFetchUsersTable();
   return (
     <Dropdown>
@@ -28,10 +28,10 @@ export function DropDownConditions() {
         <Form.Check
           type="checkbox"
           label="Usuário"
-          defaultChecked={allCollumns.includes('name')}
+          defaultChecked={allColumns.includes('name')}
           onChange={(e) => {
             const isChecked = e.target.checked;
-            setAllCollumns((current: any) =>
+            setAllColumns((current: any) =>
               isChecked
                 ? current.concat(['name'])
                 : current.filter((colName: any) => colName !== 'name')
@@ -41,10 +41,10 @@ export function DropDownConditions() {
         <Form.Check
           type="checkbox"
           label="E-mail"
-          defaultChecked={allCollumns.includes('email')}
+          defaultChecked={allColumns.includes('email')}
           onChange={(e) => {
             const isChecked = e.target.checked;
-            setAllCollumns((current: any) =>
+            setAllColumns((current: any) =>
               isChecked
                 ? current.concat(['email'])
                 : current.filter((colName: any) => colName !== 'email')
@@ -54,10 +54,10 @@ export function DropDownConditions() {
         <Form.Check
           type="checkbox"
           label="Cliente"
-          defaultChecked={allCollumns.includes('client')}
+          defaultChecked={allColumns.includes('client')}
           onChange={(e) => {
             const isChecked = e.target.checked;
-            setAllCollumns((current: any) =>
+            setAllColumns((current: any) =>
               isChecked
                 ? current.concat(['client'])
                 : current.filter((colName: any) => colName !== 'client')
@@ -67,10 +67,10 @@ export function DropDownConditions() {
         <Form.Check
           type="checkbox"
           label="Perfil de Acesso"
-          defaultChecked={allCollumns.includes('perfil')}
+          defaultChecked={allColumns.includes('perfil')}
           onChange={(e) => {
             const isChecked = e.target.checked;
-            setAllCollumns((current: any) =>
+            setAllColumns((current: any) =>
               isChecked
                 ? current.concat(['perfil'])
                 : current.filter((colName: any) => colName !== 'perfil')
