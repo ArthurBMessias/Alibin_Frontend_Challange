@@ -72,9 +72,6 @@ export const UsersProvider = ({ children }: IUsersProviderProps) => {
     }
   }
 
-  // function filterColumn(isChecked: boolean) {
-  //   if (isChecked === true) return setIsUserChecked(false);
-  // }
   return (
     <UsersContext.Provider
       value={{
@@ -84,7 +81,6 @@ export const UsersProvider = ({ children }: IUsersProviderProps) => {
         deleteUser,
         name,
         setName,
-        //filterColumn,
         allCollumns,
         setAllCollumns,
         isFiveRowsChecked,
@@ -99,23 +95,3 @@ export function useFetchUsersTable() {
   const context = useContext(UsersContext);
   return context;
 }
-
-// export const useFetchUsersTable = () => {
-//   const [usersList, setUsersList] = useState([]);
-//   const [isUserListUpdated, setIsUserListUpdated] = useState(false);
-//   const [newUser, setNewUser] = useState([false]);
-//   const [standard, setStandard] = useState(true);
-//   const [allColumns, setAllColumns] = useState(['name', 'email', 'client', 'perfil']);
-
-//   function filterColumn(isChecked) {
-//     if (isChecked === true) return setStandard(!isChecked)
-//   }
-
-//   return {
-//     allColumns,
-//     setAllColumns,
-//     standard,
-//     setStandard,
-//     filterColumn,
-//   };
-// };
