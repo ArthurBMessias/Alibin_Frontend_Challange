@@ -1,5 +1,5 @@
-import { UsersProvider } from "./hooks/useFetchUsersTable";
-import { ListPage } from "./pages/ListPage";
+import { UsersProvider } from './hooks/useFetchUsersTable';
+import { ListPage } from './pages/ListPage';
 
 export function App() {
   return (
